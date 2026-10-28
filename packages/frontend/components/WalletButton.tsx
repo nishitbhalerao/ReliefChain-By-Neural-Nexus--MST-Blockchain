@@ -71,7 +71,8 @@ export function WalletButton() {
   }
 
   // ── No wallet extension ───────────────────────────────────────────────────
-  const hasProvider = !!(window as any).ethereum;
+  const eth = (window as any).ethereum;
+  const hasProvider = !!eth;
   if (!hasProvider) {
     return (
       <a
@@ -85,6 +86,16 @@ export function WalletButton() {
     );
   }
 
+  // Detect whether BridgeKey is actually present (vs MetaMask only).
+  // BridgeKey sets isBridgeKey=true or announces via EIP-6963 rdns.
+  const providers: any[] = eth.providers ?? [];
+  const hasBridgeKey =
+    eth.isBridgeKey ||
+    providers.some(
+      (p: any) => p.isBridgeKey || p.info?.rdns === "com.mstblockchain.bridgekey"
+    );
+  const hasMetaMaskOnly = !hasBridgeKey && (eth.isMetaMask || providers.some((p: any) => p.isMetaMask));
+
   // ── Wallet present — user must explicitly click connect ───────────────────
   const injectedConnector =
     connectors.find((c) => c.type === "injected") ?? connectors[0];
@@ -92,8 +103,26 @@ export function WalletButton() {
   function handleConnect() {
     setErrorMsg("");
     if (!injectedConnector) return;
-    // Only call connect — never auto-trigger on mount.
     connect({ connector: injectedConnector });
+  }
+
+  // MetaMask detected but BridgeKey is not installed — nudge user to install.
+  if (hasMetaMaskOnly) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "0.25rem" }}>
+        <a
+          href={BRIDGEKEY_CHROME}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary btn-sm"
+        >
+          🔑 Install BridgeKey
+        </a>
+        <span style={{ fontSize: "0.7rem", color: "var(--yellow)", maxWidth: 220, textAlign: "right" }}>
+          MetaMask detected — this app uses BridgeKey wallet.
+        </span>
+      </div>
+    );
   }
 
   return (
