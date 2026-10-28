@@ -66,7 +66,7 @@ Every one of these steps is a blockchain transaction visible on MSTScan.
 
 ### Campaign Page — BridgeKey Connected
 
-![Campaign page with BridgeKey wallet connected](<img width="1917" height="1078" alt="Screenshot 2026-10-28 220344" src="https://github.com/user-attachments/assets/bbb18222-9328-40f1-bffe-436e8de6973e" />
+![Campaign page with BridgeKey wallet connected] <img width="1917" height="1078" alt="Screenshot 2026-10-28 220344" src="https://github.com/user-attachments/assets/bbb18222-9328-40f1-bffe-436e8de6973e" />
 )
 
 The Nepal Disaster Help campaign page. BridgeKey wallet is connected in the top right, showing the wallet address and MST balance. The BridgeKey activity panel shows two successful contract interactions.
@@ -75,7 +75,7 @@ The Nepal Disaster Help campaign page. BridgeKey wallet is connected in the top 
 
 ### Contract on MSTScan
 
-![Contract details on MSTScan](<img width="1900" height="1050" alt="Screenshot 2026-10-28 222211" src="https://github.com/user-attachments/assets/f5ed6227-cec8-4eae-9cc8-985303949c20" />
+![Contract details on MSTScan] <img width="1900" height="1050" alt="Screenshot 2026-10-28 222211" src="https://github.com/user-attachments/assets/f5ed6227-cec8-4eae-9cc8-985303949c20" />
 )
 
 The deployed ReliefChain contract at `0x86777dC5ec42c60627C787e94652e384EA561C17` on the MST Testnet explorer. Creator `0xF3...27aC`, deployment marked as Success.
@@ -84,7 +84,7 @@ The deployed ReliefChain contract at `0x86777dC5ec42c60627C787e94652e384EA561C17
 
 ### Operator Dashboard
 
-![Dashboard showing wallet, roles, and contract details](<img width="1917" height="1078" alt="Screenshot 2026-10-28 220359" src="https://github.com/user-attachments/assets/6391391f-c93f-489e-9738-153390c5adb9" />
+![Dashboard showing wallet, roles, and contract details] <img width="1917" height="1078" alt="Screenshot 2026-10-28 220359" src="https://github.com/user-attachments/assets/6391391f-c93f-489e-9738-153390c5adb9" />
 )
 
 The operator dashboard showing the connected BridgeKey wallet with 49.9966 MST, all four assigned roles (Admin, Organization, Approver, Recorder), and the deployed contract address.
