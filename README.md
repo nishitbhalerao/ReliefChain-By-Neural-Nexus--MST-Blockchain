@@ -169,7 +169,7 @@ Covers: campaign creation, donations, spending proposals, approve/reject/execute
 
 ## Demo Workflow
 
-1. Connect MetaMask → switch to MST Testnet (Chain ID 91562037)
+1. Connect Bridgekey → switch to MST Testnet (Chain ID 91562037)
 2. **Create campaign:** Campaigns → + Create Campaign
 3. **Donate:** Open campaign → Donate → enter amount → confirm in wallet
 4. **Propose spending:** Campaign → Propose Spending → fill form → submit
@@ -194,6 +194,8 @@ Covers: campaign creation, donations, spending proposals, approve/reject/execute
 - The ProposalList shows all proposals across all campaigns; filter by `campaignId` is client-side
 - No pagination — fine for testnet volumes, would need server-side indexing for mainnet scale
 - Source verification on MSTScan requires `MSTSCAN_API_KEY` in `.env.local`
+
+Demo Video Link :- https://drive.google.com/file/d/1bNv19H0dqtFlGy3XL45FBTR3gDRqpn5I/view?usp=drivesdk
 
 ---
 
