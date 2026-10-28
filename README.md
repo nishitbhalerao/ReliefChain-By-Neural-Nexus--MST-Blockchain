@@ -32,7 +32,7 @@ A blockchain-powered disaster-relief donation and fund-management platform built
 | Role-based access control | ✅ |
 | Public transparency dashboard | ✅ |
 | MSTScan transaction links | ✅ |
-| Wallet connection (MetaMask / injected) | ✅ |
+| Wallet connection (Bridgekey) | ✅ |
 | Wrong-network detection & switch prompt | ✅ |
 | Campaign accounting (donated / paid / balance) | ✅ |
 
@@ -86,7 +86,7 @@ reliefchain/
 
 ### Prerequisites
 - Node.js ≥ 18.18
-- A browser wallet (MetaMask) configured for MST Testnet
+- A browser wallet  configured for MST Testnet
 - MST Testnet tokens from https://faucet.masterstroke.academy
 
 ### 1. Install dependencies
