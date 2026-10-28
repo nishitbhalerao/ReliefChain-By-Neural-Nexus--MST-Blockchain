@@ -1,16 +1,14 @@
 import type { HardhatRuntimeEnvironment } from "hardhat/types";
 
 export async function deployAll(hre: HardhatRuntimeEnvironment) {
-  const message = "Hello, MST!";
-
-  const Hello = await hre.ethers.getContractFactory("Hello");
-  const hello = await Hello.deploy(message);
-  await hello.waitForDeployment();
+  const ReliefChain = await hre.ethers.getContractFactory("ReliefChain");
+  const reliefChain = await ReliefChain.deploy();
+  await reliefChain.waitForDeployment();
 
   return {
-    Hello: {
-      address: await hello.getAddress(),
-      constructorArguments: [message],
+    ReliefChain: {
+      address: await reliefChain.getAddress(),
+      constructorArguments: [] as unknown[],
     },
   };
 }

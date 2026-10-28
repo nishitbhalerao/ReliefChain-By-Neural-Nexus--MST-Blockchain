@@ -8,7 +8,10 @@ const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <WagmiProvider config={wagmiConfig}>
+    // reconnectOnMount={false} — prevents wagmi from auto-requesting wallet
+    // permissions on every page load, which causes the MetaMask/BridgeKey
+    // permission-request spam loop. User explicitly clicks Connect.
+    <WagmiProvider config={wagmiConfig} reconnectOnMount={false}>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </WagmiProvider>
   );
