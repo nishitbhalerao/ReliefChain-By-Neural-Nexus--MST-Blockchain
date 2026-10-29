@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useAccount, useConnect, useDisconnect, useBalance, useSwitchChain } from "wagmi";
 import { mstTestnet } from "@/lib/chains";
 import { shortAddress, formatMST } from "@/lib/reliefchain";
+import { IconKey, IconWarning } from "./Icons";
 
 const BRIDGEKEY_CHROME =
   "https://chromewebstore.google.com/detail/bridgekey/bfjojdcfenehemjgjlepdjomkpginlkg";
@@ -48,15 +49,17 @@ export function WalletButton() {
         {isConnected && chainId !== mstTestnet.id && (
           <button
             className="btn btn-sm"
-            style={{ borderColor: "var(--red)", color: "var(--red)" }}
+            style={{ borderColor: "var(--red)", color: "var(--red)", display: "flex", alignItems: "center", gap: "0.3rem" }}
             disabled={isSwitching}
             onClick={() => switchChain({ chainId: mstTestnet.id })}
           >
-            {isSwitching ? <span className="spin" /> : "⚠️"} Switch to MST Testnet
+            {isSwitching ? <span className="spin" /> : <IconWarning size="0.95em" />}
+            Switch to MST Testnet
           </button>
         )}
-        <span className="addr" title={address}>
-          🔑 {shortAddress(address)}
+        <span className="addr" title={address} style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+          <IconKey size="0.95em" />
+          {shortAddress(address)}
           {balance && chainId === mstTestnet.id && (
             <span className="muted" style={{ marginLeft: "0.4rem" }}>
               {formatMST(balance.value, 3)} MST
@@ -80,8 +83,9 @@ export function WalletButton() {
         target="_blank"
         rel="noopener noreferrer"
         className="btn btn-primary btn-sm"
+        style={{ display: "flex", alignItems: "center", gap: "0.35rem" }}
       >
-        🔑 Install BridgeKey
+        <IconKey size="0.95em" /> Install BridgeKey
       </a>
     );
   }
@@ -115,8 +119,9 @@ export function WalletButton() {
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-primary btn-sm"
+          style={{ display: "flex", alignItems: "center", gap: "0.35rem" }}
         >
-          🔑 Install BridgeKey
+          <IconKey size="0.95em" /> Install BridgeKey
         </a>
         <span style={{ fontSize: "0.7rem", color: "var(--yellow)", maxWidth: 220, textAlign: "right" }}>
           MetaMask detected — this app uses BridgeKey wallet.
@@ -131,8 +136,12 @@ export function WalletButton() {
         className="btn btn-primary btn-sm"
         disabled={isPending}
         onClick={handleConnect}
+        style={{ display: "flex", alignItems: "center", gap: "0.35rem" }}
       >
-        {isPending ? <><span className="spin" /> Connecting…</> : <>🔑 Connect BridgeKey</>}
+        {isPending
+          ? <><span className="spin" /> Connecting…</>
+          : <><IconKey size="0.95em" /> Connect BridgeKey</>
+        }
       </button>
       {errorMsg && (
         <span style={{ fontSize: "0.73rem", color: "var(--red)", marginTop: "0.25rem", maxWidth: 220, textAlign: "right" }}>

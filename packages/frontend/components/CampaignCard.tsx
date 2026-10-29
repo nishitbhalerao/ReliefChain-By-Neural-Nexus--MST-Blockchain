@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Campaign, CampaignStatus, formatMST } from "@/lib/reliefchain";
 import { useCampaignTotals } from "@/hooks/useReliefChain";
+import { IconPin } from "./Icons";
 
 interface Props {
   campaign: Campaign;
@@ -28,8 +29,9 @@ export function CampaignCard({ campaign }: Props) {
       <div className="campaign-card-header">
         <div>
           <div className="campaign-card-title">{campaign.name}</div>
-          <div className="campaign-card-meta mt-1">
-            📍 {campaign.affectedRegion}
+          <div className="campaign-card-meta mt-1" style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
+            <IconPin size="0.85em" style={{ flexShrink: 0 }} />
+            {campaign.affectedRegion}
           </div>
         </div>
         <span className={`badge ${isClosed ? "badge-gray" : "badge-green"}`}>

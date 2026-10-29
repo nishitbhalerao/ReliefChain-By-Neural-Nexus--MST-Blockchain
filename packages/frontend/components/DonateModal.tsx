@@ -6,6 +6,7 @@ import { useBalance, useAccount } from "wagmi";
 import { useReliefChainWrite } from "@/hooks/useReliefChain";
 import { TxStatus } from "./TxStatus";
 import { formatMST } from "@/lib/reliefchain";
+import { IconCheckCircle, IconWarning } from "./Icons";
 
 interface Props {
   campaignId: bigint;
@@ -45,7 +46,10 @@ export function DonateModal({ campaignId, campaignName, onClose, onSuccess }: Pr
     return (
       <div className="modal-overlay" onClick={onClose}>
         <div className="modal" onClick={(e) => e.stopPropagation()}>
-          <div className="modal-title">✅ Donation Confirmed!</div>
+          <div className="modal-title" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <IconCheckCircle size="1.2em" style={{ color: "var(--green)" }} />
+            Donation Confirmed!
+          </div>
           <TxStatus txHash={txHash} isConfirmed={isConfirmed} />
           <p className="text-sm muted mb-2">
             Your donation of <strong>{amount} MST</strong> has been confirmed on MST Testnet.
@@ -87,8 +91,9 @@ export function DonateModal({ campaignId, campaignName, onClose, onSuccess }: Pr
             />
           </div>
 
-          <div className="alert alert-yellow" style={{ marginBottom: "1rem" }}>
-            ⚠️ Demo only — uses MST Testnet tokens. Not real charitable donations.
+          <div className="alert alert-yellow" style={{ marginBottom: "1rem", display: "flex", alignItems: "flex-start", gap: "0.4rem" }}>
+            <IconWarning size="1em" style={{ flexShrink: 0, marginTop: "0.1rem" }} />
+            Demo only — uses MST Testnet tokens. Not real charitable donations.
             Funds are held by the smart contract until an approved spending proposal is executed.
           </div>
 

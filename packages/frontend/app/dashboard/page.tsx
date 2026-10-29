@@ -10,6 +10,7 @@ import { DashboardProposalsList } from "@/components/DashboardProposalsList";
 import { addrLink, formatMST } from "@/lib/reliefchain";
 import { ROLE_HASHES } from "@/lib/roles";
 import { WalletButton } from "@/components/WalletButton";
+import { IconKey, IconCheckCircle, IconWarning } from "@/components/Icons";
 
 const APPROVER_ROLE     = ROLE_HASHES.APPROVER_ROLE;
 const ORGANIZATION_ROLE = ROLE_HASHES.ORGANIZATION_ROLE;
@@ -38,7 +39,9 @@ export default function DashboardPage() {
     return (
       <div className="page-wrap" style={{ paddingTop: "3rem" }}>
         <div className="card" style={{ textAlign: "center", padding: "3rem" }}>
-          <div style={{ fontSize: "3rem", marginBottom: "0.75rem" }}>🔑</div>
+          <div style={{ fontSize: "3rem", marginBottom: "0.75rem", color: "var(--accent)", display: "flex", justifyContent: "center" }}>
+            <IconKey size="3rem" />
+          </div>
           <h2 className="font-bold mb-2">Connect BridgeKey Wallet</h2>
           <p className="muted text-sm mb-3">
             Connect your BridgeKey wallet to view your dashboard, create campaigns, and manage funds.
@@ -93,8 +96,11 @@ export default function DashboardPage() {
           </div>
           <div className="stat-card">
             <div className="stat-label">Network</div>
-            <div className="stat-value" style={{ fontSize: "1rem" }}>
-              {chainId === 91562037 ? "✅ MST Testnet" : "⚠️ Wrong Network"}
+            <div className="stat-value" style={{ fontSize: "1rem", display: "flex", alignItems: "center", gap: "0.3rem" }}>
+              {chainId === 91562037
+                ? <><IconCheckCircle size="1em" style={{ color: "var(--green)" }} /> MST Testnet</>
+                : <><IconWarning size="1em" style={{ color: "var(--yellow)" }} /> Wrong Network</>
+              }
             </div>
             <div className="stat-unit">Chain ID: {chainId}</div>
           </div>

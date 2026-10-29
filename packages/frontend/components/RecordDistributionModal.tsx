@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useReliefChainWrite } from "@/hooks/useReliefChain";
 import { TxStatus } from "./TxStatus";
+import { IconCheckCircle, IconInfo } from "./Icons";
 
 interface Props {
   campaignId: bigint;
@@ -50,7 +51,10 @@ export function RecordDistributionModal({ campaignId, onClose }: Props) {
     return (
       <div className="modal-overlay" onClick={onClose}>
         <div className="modal" onClick={(e) => e.stopPropagation()}>
-          <div className="modal-title">✅ Distribution Recorded!</div>
+          <div className="modal-title" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <IconCheckCircle size="1.2em" style={{ color: "var(--green)" }} />
+            Distribution Recorded!
+          </div>
           <TxStatus txHash={txHash} isConfirmed={isConfirmed} />
           <p className="text-sm muted mb-2">
             The aid distribution event has been recorded on-chain.
@@ -119,8 +123,9 @@ export function RecordDistributionModal({ campaignId, onClose }: Props) {
             />
           </div>
 
-          <div className="alert alert-blue" style={{ marginBottom: "1rem" }}>
-            ℹ️ This records a claimed delivery. It does not constitute independently verified
+          <div className="alert alert-blue" style={{ marginBottom: "1rem", display: "flex", alignItems: "flex-start", gap: "0.4rem" }}>
+            <IconInfo size="1em" style={{ flexShrink: 0, marginTop: "0.1rem" }} />
+            This records a claimed delivery. It does not constitute independently verified
             physical aid distribution.
           </div>
 

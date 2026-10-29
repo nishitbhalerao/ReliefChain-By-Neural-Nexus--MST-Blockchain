@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useReliefChainWrite } from "@/hooks/useReliefChain";
 import { TxStatus } from "./TxStatus";
 import { DISASTER_CATEGORIES } from "@/lib/reliefchain";
+import { IconCheckCircle, IconWarning } from "./Icons";
 
 interface Props {
   onClose: () => void;
@@ -57,7 +58,10 @@ export function CreateCampaignModal({ onClose }: Props) {
     return (
       <div className="modal-overlay" onClick={onClose}>
         <div className="modal" onClick={(e) => e.stopPropagation()}>
-          <div className="modal-title">✅ Campaign Created!</div>
+          <div className="modal-title" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <IconCheckCircle size="1.2em" style={{ color: "var(--green)" }} />
+            Campaign Created!
+          </div>
           <TxStatus txHash={txHash} isConfirmed={isConfirmed} />
           <p className="text-sm muted mb-2">
             Your campaign has been created on MST Testnet. It will appear in the campaign list.
@@ -135,8 +139,9 @@ export function CreateCampaignModal({ onClose }: Props) {
             />
           </div>
 
-          <div className="alert alert-yellow" style={{ marginBottom: "1rem" }}>
-            ⚠️ Demo only — uses MST Testnet tokens. Not real charitable donations.
+          <div className="alert alert-yellow" style={{ marginBottom: "1rem", display: "flex", alignItems: "flex-start", gap: "0.4rem" }}>
+            <IconWarning size="1em" style={{ flexShrink: 0, marginTop: "0.1rem" }} />
+            Demo only — uses MST Testnet tokens. Not real charitable donations.
           </div>
 
           <div className="modal-footer">
