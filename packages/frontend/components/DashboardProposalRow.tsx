@@ -14,6 +14,7 @@ import {
 } from "@/lib/reliefchain";
 import { ROLE_HASHES } from "@/lib/roles";
 import { useState } from "react";
+import { IconCheck, IconX, IconRocket } from "./Icons";
 
 const APPROVER_ROLE     = ROLE_HASHES.APPROVER_ROLE;
 const ORGANIZATION_ROLE = ROLE_HASHES.ORGANIZATION_ROLE;
@@ -102,12 +103,36 @@ export function DashboardProposalRow({ proposalId, filterStatus }: Props) {
         <div className="flex" style={{ gap: "0.3rem" }}>
           {p.status === 0 && (isApprover as boolean) && (
             <>
-              <button className="btn btn-sm" style={{ borderColor: "var(--green)", color: "var(--green)" }} disabled={isPending || isConfirming} onClick={() => action("approveSpending")}>✓</button>
-              <button className="btn btn-sm btn-danger" disabled={isPending || isConfirming} onClick={() => action("rejectSpending")}>✗</button>
+              <button
+                className="btn btn-sm"
+                style={{ borderColor: "var(--green)", color: "var(--green)", display: "flex", alignItems: "center", gap: "0.2rem" }}
+                disabled={isPending || isConfirming}
+                onClick={() => action("approveSpending")}
+                title="Approve"
+              >
+                <IconCheck size="0.85em" />
+              </button>
+              <button
+                className="btn btn-sm btn-danger"
+                style={{ display: "flex", alignItems: "center", gap: "0.2rem" }}
+                disabled={isPending || isConfirming}
+                onClick={() => action("rejectSpending")}
+                title="Reject"
+              >
+                <IconX size="0.85em" />
+              </button>
             </>
           )}
           {p.status === 1 && (isOrg as boolean) && (
-            <button className="btn btn-sm btn-primary" disabled={isPending || isConfirming} onClick={() => action("executeSpending")}>🚀 Pay</button>
+            <button
+              className="btn btn-sm btn-primary"
+              style={{ display: "flex", alignItems: "center", gap: "0.2rem" }}
+              disabled={isPending || isConfirming}
+              onClick={() => action("executeSpending")}
+              title="Execute payout"
+            >
+              <IconRocket size="0.85em" /> Pay
+            </button>
           )}
         </div>
       </td>

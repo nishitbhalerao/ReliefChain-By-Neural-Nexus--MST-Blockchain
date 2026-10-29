@@ -1,6 +1,7 @@
 "use client";
 
 import { txLink } from "@/lib/reliefchain";
+import { IconCheckCircle, IconXCircle } from "./Icons";
 
 interface Props {
   txHash?: `0x${string}`;
@@ -25,7 +26,7 @@ export function TxStatus({ txHash, isPending, isConfirming, isConfirmed, error, 
       }`}
       style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}
     >
-      <span style={{ flex: 1 }}>
+      <span style={{ flex: 1, display: "flex", alignItems: "center", gap: "0.4rem", flexWrap: "wrap" }}>
         {isPending && (
           <>
             <span className="spin" /> Awaiting wallet confirmation…
@@ -43,7 +44,8 @@ export function TxStatus({ txHash, isPending, isConfirming, isConfirmed, error, 
         )}
         {isConfirmed && (
           <>
-            ✅ Transaction confirmed!{" "}
+            <IconCheckCircle size="1em" style={{ color: "var(--green)", flexShrink: 0 }} />
+            Transaction confirmed!{" "}
             {txHash && (
               <a href={txLink(txHash)} target="_blank" rel="noopener noreferrer" className="hash-link">
                 View on MSTScan ↗
@@ -51,7 +53,12 @@ export function TxStatus({ txHash, isPending, isConfirming, isConfirmed, error, 
             )}
           </>
         )}
-        {error && <>❌ {error.message?.slice(0, 200)}</>}
+        {error && (
+          <>
+            <IconXCircle size="1em" style={{ color: "var(--red)", flexShrink: 0 }} />
+            {error.message?.slice(0, 200)}
+          </>
+        )}
       </span>
       {onDismiss && (
         <button

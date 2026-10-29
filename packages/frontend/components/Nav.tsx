@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { WalletButton } from "./WalletButton";
+import { IconRelief } from "./Icons";
 
 export function Nav() {
   const pathname = usePathname();
@@ -10,8 +11,9 @@ export function Nav() {
   return (
     <nav className="nav">
       <div className="nav-inner">
-        <Link href="/" className="nav-brand">
-          ⛑️ ReliefChain
+        <Link href="/" className="nav-brand" style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+          <IconRelief size="1.3em" style={{ color: "var(--accent)" }} />
+          ReliefChain
         </Link>
         <div className="nav-links">
           <Link href="/campaigns" className={`nav-link ${pathname.startsWith("/campaigns") ? "active" : ""}`}>

@@ -5,6 +5,7 @@ import { parseEther, isAddress } from "viem";
 import { useReliefChainWrite } from "@/hooks/useReliefChain";
 import { TxStatus } from "./TxStatus";
 import { formatMST } from "@/lib/reliefchain";
+import { IconCheckCircle } from "./Icons";
 
 interface Props {
   campaignId: bigint;
@@ -66,7 +67,10 @@ export function ProposeSpendingModal({ campaignId, maxAmount, onClose, onSuccess
     return (
       <div className="modal-overlay" onClick={onClose}>
         <div className="modal" onClick={(e) => e.stopPropagation()}>
-          <div className="modal-title">✅ Proposal Submitted!</div>
+          <div className="modal-title" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <IconCheckCircle size="1.2em" style={{ color: "var(--green)" }} />
+            Proposal Submitted!
+          </div>
           <TxStatus txHash={txHash} isConfirmed={isConfirmed} />
           <p className="text-sm muted mb-2">
             Your spending proposal is now pending approval by an authorized approver.

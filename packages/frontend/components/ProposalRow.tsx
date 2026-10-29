@@ -13,6 +13,7 @@ import {
 import { useReliefChainContract } from "@/hooks/useReliefChain";
 import { useState } from "react";
 import { TxStatus } from "./TxStatus";
+import { IconCheck, IconX, IconRocket } from "./Icons";
 
 import { ROLE_HASHES } from "@/lib/roles";
 const APPROVER_ROLE     = ROLE_HASHES.APPROVER_ROLE;
@@ -120,31 +121,33 @@ export function ProposalRow({ proposalId, campaignId, onRefresh }: Props) {
             <>
               <button
                 className="btn btn-sm"
-                style={{ borderColor: "var(--green)", color: "var(--green)" }}
+                style={{ borderColor: "var(--green)", color: "var(--green)", display: "flex", alignItems: "center", gap: "0.25rem" }}
                 disabled={isPending || isConfirming}
                 onClick={() => action("approveSpending")}
                 title="Approve this proposal"
               >
-                ✓ Approve
+                <IconCheck size="0.85em" /> Approve
               </button>
               <button
                 className="btn btn-sm btn-danger"
+                style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
                 disabled={isPending || isConfirming}
                 onClick={() => action("rejectSpending")}
                 title="Reject this proposal"
               >
-                ✗ Reject
+                <IconX size="0.85em" /> Reject
               </button>
             </>
           )}
           {p.status === 1 && (isOrg as boolean) && (
             <button
               className="btn btn-sm btn-primary"
+              style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
               disabled={isPending || isConfirming}
               onClick={() => action("executeSpending")}
               title="Execute payout"
             >
-              🚀 Execute
+              <IconRocket size="0.85em" /> Execute
             </button>
           )}
           {p.status === 3 && (

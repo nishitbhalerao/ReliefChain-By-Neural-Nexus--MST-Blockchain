@@ -27,6 +27,7 @@ import { ProposalList } from "@/components/ProposalList";
 import { DonateModal } from "@/components/DonateModal";
 import { ProposeSpendingModal } from "@/components/ProposeSpendingModal";
 import { RecordDistributionModal } from "@/components/RecordDistributionModal";
+import { IconPin, IconDonate, IconClipboard, IconPackage } from "@/components/Icons";
 
 export default function CampaignDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -93,19 +94,22 @@ export default function CampaignDetailPage() {
             </span>
           </div>
           <h1 style={{ fontSize: "1.6rem", fontWeight: 800 }}>{campaign.name}</h1>
-          <p className="muted text-sm mt-1">📍 {campaign.affectedRegion}</p>
+          <p className="muted text-sm mt-1" style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
+            <IconPin size="0.9em" style={{ flexShrink: 0 }} />
+            {campaign.affectedRegion}
+          </p>
         </div>
         <div className="flex flex-wrap">
           {isActive && isConnected && (
             <>
-              <button className="btn btn-primary" onClick={() => setShowDonate(true)}>
-                💰 Donate
+              <button className="btn btn-primary" style={{ display: "flex", alignItems: "center", gap: "0.35rem" }} onClick={() => setShowDonate(true)}>
+                <IconDonate size="0.95em" /> Donate
               </button>
-              <button className="btn" onClick={() => setShowPropose(true)}>
-                📋 Propose Spending
+              <button className="btn" style={{ display: "flex", alignItems: "center", gap: "0.35rem" }} onClick={() => setShowPropose(true)}>
+                <IconClipboard size="0.95em" /> Propose Spending
               </button>
-              <button className="btn" onClick={() => setShowDistribution(true)}>
-                📦 Record Distribution
+              <button className="btn" style={{ display: "flex", alignItems: "center", gap: "0.35rem" }} onClick={() => setShowDistribution(true)}>
+                <IconPackage size="0.95em" /> Record Distribution
               </button>
             </>
           )}
